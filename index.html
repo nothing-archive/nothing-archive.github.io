@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nothing Archive - The most up-to-date Nothing OS firmware repository. Stock updates, full firmware, and system images for Nothing devices.">
+    <title>Nothing Archive | Stock Firmware Releases</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3846406823046536"
+     crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-3846406823046536">
+    <style>
+        /* === BASE & GLASSMORPHISM SETUP === */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #e0e0e0;
+            --text-muted: #999;
+            --accent: #ff0033;
+            --accent-glow: rgba(255, 0, 51, 0.4);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(circle at top right, #1a0505, #000000, #050505);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            /* Text Selection Block */
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+        /* Glass Panel Class */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        h1, h2, h3 { color: #fff; margin-top: 0; font-weight: 600; letter-spacing: 0.5px; }
+        h2 { border-bottom: 1px solid var(--glass-border); padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        a { color: #4da6ff; text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--accent); }
+
+        /* === NAVBAR === */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+        }
+        .nav-logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; color: #fff; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links a { margin-left: 20px; font-size: 0.9rem; font-weight: 500; color: var(--text-muted); }
+        .nav-links a:hover { color: #fff; }
+
+        /* === HERO SECTION === */
+        .hero { text-align: center; padding: 60px 20px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        /* === GRID LAYOUTS === */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+        /* === TABLES === */
+        .table-wrapper { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 10px; }
+        th, td { border: 1px solid var(--glass-border); padding: 12px 15px; text-align: left; }
+        th { background: rgba(255,255,255,0.05); color: #fff; font-weight: 600; }
+        tr:hover { background: rgba(255,255,255,0.02); }
+
+        /* === TERMINAL CODE BLOCKS === */
+        pre {
+            background: #050505;
+            border: 1px solid #222;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        }
+        
+        .ota-row { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid var(--glass-border); }
+        .ota-row:last-child { border-bottom: none; }
+        .version-info { font-weight: bold; font-size: 1rem; color: #fff; }
+        .build-no { font-size: 0.8rem; color: var(--text-muted); font-family: monospace; }
+        .download-btn { background: rgba(255,0,51,0.1); border: 1px solid var(--accent); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
+        .download-btn:hover { background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+
+        /* === SCROLLABLE LEGAL FOOTER === */
+        .scrollable-legal {
+            max-height: 150px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+        .scrollable-legal::-webkit-scrollbar { width: 5px; }
+        .scrollable-legal::-webkit-scrollbar-track { background: transparent; }
+        .scrollable-legal::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+        /* === SECURITY OVERLAY === */
+        #troll-overlay { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: #000; z-index: 999999; text-align: center; color: var(--accent); padding-top: 100px;
+        }
+        #troll-overlay img { width: 90%; max-width: 400px; border: 2px solid #222; border-radius: 10px; margin-bottom: 20px; }
+
+        /* === ADSENSE MEGA FOOTER === */
+        .mega-footer {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: 60px 20px 30px;
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .footer-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        .footer-col h3 { color: #fff; font-size: 1rem; margin-bottom: 20px; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+        .footer-col p { line-height: 1.6; margin-bottom: 15px; }
+        .footer-col ul { list-style: none; padding: 0; margin: 0; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-bottom { text-align: center; padding-top: 30px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
+
+        #loader { text-align: center; padding: 40px; color: var(--accent); font-weight: bold; letter-spacing: 2px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+    </style>
+</head>
+
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+    <div id="troll-overlay">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJwamNreXJmZnd4bmR4Z3R4Z3R4Z3R4Z3R4Z3R4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/fNuXf_CPslS8/giphy.gif" alt="Access Denied">
+        <h1 style="letter-spacing: 5px;">ACCESS DENIED</h1>
+        <p>System violation detected. Source code access is strictly restricted.</p>
+    </div>
+
+    <div id="main-ui">
+        <nav class="navbar glass-panel" style="margin: 20px auto; max-width: 1100px; border-radius: 50px; padding: 15px 30px;">
+            <div class="nav-logo">NOTHING&nbsp;<span>ARCHIVE</span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="knowledge-base.html">Guides</a>
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="hero glass-panel">
+                <h1>Stock Firmware & System Releases</h1>
+                <p>The most comprehensive Nothing OS firmware repository, offering system updates, full software packages, and stock images for Nothing and CMF phones.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="glass-panel">
+                    <h2><span style="color:var(--accent)">⚡</span> Features</h2>
+                    <ul style="padding-left: 20px; color: var(--text-muted);">
+                        <li><strong style="color:#fff;">Direct Release Indexing:</strong> Tracks software links directly from original sources.</li>
+                        <li><strong style="color:#fff;">Manual Installation:</strong> Recover devices using offline updater or ADB.</li>
+                        <li><strong style="color:#fff;">Rooting Support:</strong> Stock boot images provided for Magisk & KernelSU.</li>
+                    </ul>
+                </div>
+                <div class="glass-panel">
+                    <h2><span style="color:var(--accent)">📁</span> Categorization</h2>
+                    <div class="table-wrapper">
+                        <table>
+                            <tr><th>Device Family</th><th>Boot Partitions</th></tr>
+                            <tr><td>Phone Series</td><td>boot, init_boot, vendor_boot, vbmeta</td></tr>
+                            <tr><td>CMF Series</td><td>boot, dtbo, init_boot, vendor_boot</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel" id="downloads">
+                <h2><span style="color:var(--accent)">📥</span> Software Release Index</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">Select your device model below to access incremental downloads.</p>
+                <div id="loader">FETCHING SECURE DATABASE...</div>
+                <div id="content"></div>
+            </div>
+        </div>
+
+        <footer class="mega-footer" id="legal">
+            <div class="footer-grid">
+                
+                <div class="footer-col">
+                    <h3>About the Archive</h3>
+                    <p>Created and maintained by <b>Shivansh Kumar</b>. Nothing Archive is an independent repository focused on preserving Android system software for developers and enthusiasts. <strong>We DO NOT modify, alter, or repackage any files.</strong> All links direct to original, unmodified source servers.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Legal & Disclaimer (Scroll)</h3>
+                    <div class="scrollable-legal">
+                        <p><strong>Disclaimer:</strong> This website is <strong>NOT affiliated</strong> with, endorsed by, or sponsored by Nothing Technology Limited. All product names, logos, brands, and trademarks are property of their respective owners. The term "Nothing" is used solely for descriptive and identification purposes.</p>
+                        <p><strong>Terms of Service:</strong> All files and guides are provided "as-is" without warranty of any kind. The site administrator (Shivansh Kumar) assumes no responsibility for any device malfunction, data loss, or voided warranties. Flashing software is done entirely at your own risk.</p>
+                        <p><strong>Privacy Policy:</strong> We use third-party advertising partners, such as Google AdSense. Google uses cookies (like the DoubleClick DART cookie) to serve ads based on your prior visits. You may opt out of personalized advertising by visiting Google's Ads Settings. We do not manually collect or store any of your personal identifiable information.</p>
+                        <p><strong>Anti-Bot Policy:</strong> Automated scraping, excessive API requests, or generating invalid ad traffic is strictly monitored and will result in a permanent IP ban.</p>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact & Headquarters</h3>
+                    <ul style="margin-bottom: 15px;">
+                        <li><a href="https://nothingfirmware.github.io/" target="_blank">GitHub Repository ↗</a></li>
+                        <li><a href="mailto:support@nothingarchive.com">Email Support ↗</a></li>
+                    </ul>
+                    <p><strong>Address:</strong><br>
+                    Level 4, Statesman House,<br>
+                    Barakhamba Road, Connaught Place,<br>
+                    New Delhi, Delhi 110001, India</p>
+                    <p><strong>Phone:</strong> +91 11 2331 4590</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                &copy; 2026 Nothing Archive. All rights reserved. | Handcrafted by Shivansh Kumar.
+            </div>
+        </footer>
+    </div> 
+<script src="javascript.io" defer></script>
+        
+</body>
+</html>
