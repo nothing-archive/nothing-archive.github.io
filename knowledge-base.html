@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical Guides and Knowledge Base for Nothing OS. Learn how to sideload updates and restore stock partitions safely.">
+    <title>Knowledge Base | Nothing Archive</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3846406823046536" crossorigin="anonymous"></script>
+    <style>
+        /* === BASE & GLASSMORPHISM SETUP === */
+        :root { --glass-bg: rgba(255, 255, 255, 0.03); --glass-border: rgba(255, 255, 255, 0.08); --text-main: #e0e0e0; --text-muted: #999; --accent: #ff0033; --accent-glow: rgba(255, 0, 51, 0.4); }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: radial-gradient(circle at top right, #1a0505, #000000, #050505); background-attachment: fixed; color: var(--text-main); line-height: 1.6; user-select: none; -webkit-user-select: none; }
+        ::-webkit-scrollbar { width: 8px; } ::-webkit-scrollbar-track { background: #000; } ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; } ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 16px; padding: 25px; margin-bottom: 30px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5); }
+        h1, h2, h3 { color: #fff; margin-top: 0; font-weight: 600; letter-spacing: 0.5px; }
+        h2 { border-bottom: 1px solid var(--glass-border); padding-bottom: 12px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        a { color: #4da6ff; text-decoration: none; transition: 0.3s; } a:hover { color: var(--accent); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: sticky; top: 10px; z-index: 1000; }
+        .nav-logo { font-weight: 800; font-size: 1.2rem; letter-spacing: 2px; color: #fff; } .nav-logo span { color: var(--accent); }
+        .nav-links a { margin-left: 20px; font-size: 0.9rem; font-weight: 500; color: var(--text-muted); } .nav-links a:hover { color: #fff; }
+        
+        details { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); border-radius: 10px; margin-bottom: 15px; overflow: hidden; transition: all 0.3s ease; }
+        summary { padding: 18px 20px; font-size: 1.1rem; font-weight: 600; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: var(--glass-bg); }
+        summary::-webkit-details-marker { display: none; } summary:after { content: '+'; font-size: 1.5rem; color: var(--accent); } details[open] summary:after { content: '−'; }
+        .details-content { padding: 20px; border-top: 1px solid var(--glass-border); font-size: 0.95rem; }
+        pre { background: #050505; border: 1px solid #222; padding: 15px; border-radius: 8px; overflow-x: auto; color: #0f0; font-family: 'Courier New', monospace; font-size: 0.85rem; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+        
+        .seo-article { background: rgba(0, 0, 0, 0.6); padding: 30px; border-radius: 12px; border: 1px solid var(--glass-border); margin-bottom: 30px; font-size: 0.95rem; color: #bbb; line-height: 1.8; }
+        .seo-article h3 { color: #fff; margin-top: 25px; margin-bottom: 15px; font-size: 1.3rem; border-bottom: 1px dashed #333; padding-bottom: 5px; }
+        
+        #troll-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999999; text-align: center; color: var(--accent); padding-top: 100px; }
+        #troll-overlay img { width: 90%; max-width: 400px; border: 2px solid #222; border-radius: 10px; margin-bottom: 20px; }
+        
+        .mega-footer { background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border); padding: 60px 20px 30px; margin-top: 60px; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h3 { color: #fff; font-size: 1rem; margin-bottom: 20px; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+        .footer-col p { line-height: 1.6; margin-bottom: 15px; } .footer-col ul { list-style: none; padding: 0; margin: 0; } .footer-col ul li { margin-bottom: 10px; }
+        .footer-bottom { text-align: center; padding-top: 30px; margin-top: 40px; border-top: 1px solid var(--glass-border); }
+        .scrollable-legal { max-height: 150px; overflow-y: auto; background: rgba(0, 0, 0, 0.4); padding: 15px; border-radius: 8px; border: 1px solid #333; font-size: 0.8rem; margin-top: 10px; }
+        .scrollable-legal::-webkit-scrollbar { width: 5px; } .scrollable-legal::-webkit-scrollbar-track { background: transparent; } .scrollable-legal::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+    </style>
+</head>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+    <div id="troll-overlay"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJwamNreXJmZnd4bmR4Z3R4Z3R4Z3R4Z3R4Z3R4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/fNuXf_CPslS8/giphy.gif" alt="Access Denied"><h1 style="letter-spacing: 5px;">ACCESS DENIED</h1><p>System violation detected.</p></div>
+
+    <div id="main-ui">
+        <nav class="navbar glass-panel" style="margin: 20px auto; max-width: 1100px; border-radius: 50px; padding: 15px 30px;">
+            <div class="nav-logo">NOTHING&nbsp;<span>ARCHIVE</span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="knowledge-base.html">Guides</a>
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="glass-panel" id="guides">
+                <h2><span style="color:var(--accent)">🛠️</span> Technical Guides</h2>
+                
+                <details>
+                    <summary>1. System Sideloading (Offline Updater)</summary>
+                    <div class="details-content">
+                        <p>Bootloader unlocking is <strong>not mandatory</strong> to sideload incremental updates. Sideloading software is safe as long as it is untouched.</p>
+                        <ol>
+                            <li>Create a folder named <code>ota</code> in your device's internal storage: <code>/sdcard/ota/</code></li>
+                            <li>Move the downloaded firmware <code>.zip</code> file to this folder.</li>
+                            <li>Open the Phone app and dial: <br> <pre>*#*#682#*#*</pre></li>
+                            <li>The built-in offline updater tool will launch. Tap <strong>Directly Apply</strong>.</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>2. Restoring Stock Partitions (For Rooted Users)</summary>
+                    <div class="details-content">
+                        <p>If your bootloader is locked, skip this. Rooted users must flash stock partitions in bootloader mode before updating:</p>
+<pre>fastboot flash boot boot.img
+fastboot flash recovery recovery.img
+fastboot flash vendor_boot vendor_boot.img
+fastboot flash vbmeta vbmeta.img
+fastboot flash init_boot init_boot.img</pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>3. Unlocking & Relocking Bootloader</summary>
+                    <div class="details-content">
+                        <p><strong>Unlock Warning:</strong> Erases all data and voids warranty. Ensure OEM Unlocking is enabled.</p>
+<pre># To Unlock:
+adb reboot bootloader
+fastboot flashing unlock
+
+# To Relock (Ensure 100% Stock ROM first):
+fastboot flashing lock</pre>
+                    </div>
+                </details>
+            </div>
+
+            <div class="seo-article">
+                <h2><span style="color:var(--accent)">📚</span> Comprehensive Knowledge Base: Understanding System Firmware</h2>
+                <p>Welcome to the ultimate hub for understanding, downloading, and managing your smartphone's system software. Android enthusiasts and developers often need access to untouched, original system images for various purposes—whether it is to recover a soft-bricked device, apply the latest security patches manually, or prepare a device for root access using modern tools like Magisk and KernelSU. This archive is dedicated to providing those essential files in an organized, accessible, and highly reliable manner.</p>
+                <h3>The Importance of Maintaining Stock Firmware Archives</h3>
+                <p>In the rapidly evolving world of Android development, having a reliable repository for stock software is crucial. Often, manufacturers roll out updates in phases based on geographic regions. This means that a user in one country might receive a critical bug fix or a new feature drop weeks before a user in another country. By archiving these system update zip files, users gain the freedom to manually sideload these enhancements without waiting for the automated rollout. Furthermore, if a user decides to experiment with custom ROMs or modified boot images, possessing the exact stock firmware corresponding to their current build is the only guaranteed lifeline to revert the phone back to a factory-fresh state.</p>
+                <h3>Full Firmware vs. Incremental Updates: What is the Difference?</h3>
+                <p>When browsing through our software release index, you will encounter two primary types of update packages. Understanding the difference is vital for a smooth installation process. <strong>Incremental updates</strong> are smaller files, usually ranging from 50MB to 500MB. These packages contain only the specific lines of code and binary patches that have changed since the previous version. They are efficient but require your device to be entirely unmodified. On the other hand, <strong>Full Firmware packages</strong> are massive, often exceeding 2GB or 3GB. They contain the complete operating system. If your device is rooted, modifying system partitions, or experiencing severe software glitches, a full package is the recommended route to ensure all system files are overwritten correctly and cleanly.</p>
+                <h3>Demystifying Boot Partitions</h3>
+                <p>Modern Android architecture, particularly devices launching with Android 13 and above, utilizes a complex partition scheme. For developers looking to achieve root access, extracting and patching the correct image is paramount. Historically, the <code>boot.img</code> contained both the kernel and the ramdisk. However, on newer devices, the ramdisk has been moved to a separate partition known as <code>init_boot.img</code>. Therefore, if you are utilizing Magisk to patch your system, you must ensure you are patching the correct file to avoid a bootloop.</p>
+                <h3>Safe Sideloading and Best Practices</h3>
+                <p>Modifying your device's software always carries an inherent risk. Before initiating any sideloading process via ADB (Android Debug Bridge) or the hidden offline updater dialer code (*#*#682#*#*), we highly recommend backing up all personal data, including photos, contacts, and authentication apps. Ensure your device has at least a 60% battery charge to prevent sudden shutdowns during the flashing process.</p>
+            </div>
+        </div>
+
+        <footer class="mega-footer" id="legal">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About the Archive</h3>
+                    <p>Created and maintained by <b>Shivansh Kumar</b>. Nothing Archive is an independent repository focused on preserving Android system software for developers and enthusiasts. <strong>We DO NOT modify, alter, or repackage any files.</strong> All links direct to original, unmodified source servers.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal & Disclaimer (Scroll)</h3>
+                    <div class="scrollable-legal">
+                        <p><strong>Disclaimer:</strong> This website is <strong>NOT affiliated</strong> with, endorsed by, or sponsored by Nothing Technology Limited. All product names, logos, brands, and trademarks are property of their respective owners.</p>
+                        <p><strong>Terms of Service:</strong> All files and guides are provided "as-is" without warranty of any kind. Flashing software is done entirely at your own risk.</p>
+                        <p><strong>Privacy Policy:</strong> We use third-party advertising partners, such as Google AdSense. Google uses cookies to serve ads based on your prior visits. We do not manually collect or store any of your personal identifiable information.</p>
+                        <p><strong>Anti-Bot Policy:</strong> Automated scraping or generating invalid ad traffic is strictly monitored and will result in a permanent IP ban.</p>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact & Headquarters</h3>
+                    <ul style="margin-bottom: 15px;">
+                        <li><a href="https://nothingfirmware.github.io/" target="_blank">GitHub Repository ↗</a></li>
+                        <li><a href="mailto:support@nothingarchive.com">Email Support ↗</a></li>
+                    </ul>
+                    <p><strong>Address:</strong><br>Level 4, Statesman House,<br>Barakhamba Road, Connaught Place,<br>New Delhi, Delhi 110001, India</p>
+                    <p><strong>Phone:</strong> +91 11 2331 4590</p>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Nothing Archive. All rights reserved. | Handcrafted by Shivansh Kumar.</div>
+        </footer>
+    </div> 
+<script src="javascript.io" defer></script>
+</body>
+</html>
