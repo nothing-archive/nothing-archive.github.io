@@ -9,7 +9,7 @@
 
 ## ⚡ About The Project
 
-**Nothing Firmware** is an independent, community-driven database designed to provide instant and direct access to Nothing OS updates. We bypass the gatekeepers and third-party file hosts by indexing direct `googleapis.com` OTA links for all Nothing and CMF devices.
+**Nothing Archive** is an independent, community-driven database designed to provide instant and direct access to Nothing OS updates. We bypass the gatekeepers and third-party file hosts by indexing direct `googleapis.com` OTA links for all Nothing and CMF devices.
 
 Whether you are looking to manually sideload an update, recover a bricked device, or extract stock boot images for rooting, you will find the unaltered, official files here.
 
@@ -45,7 +45,7 @@ We currently index firmware and OTA updates for the following devices:
 
 You don't need an unlocked bootloader to install official OTA updates.
 
-1. Visit the [Nothing Firmware](https://nothing-archive.github.io/) and download the correct `.zip` for your device.
+1. Visit the [Nothing Archive](https://nothing-archive.github.io/) and download the correct `.zip` for your device.
 2. Create a folder named `ota` in your phone's internal storage (`/sdcard/ota/`).
 3. Move the downloaded `.zip` file into this folder.
 4. Open your phone's dialer and type `*#*#682#*#*` to launch the offline updater tool.
@@ -62,5 +62,5 @@ You don't need an unlocked bootloader to install official OTA updates.
 ---
 
 <div align="center">
-  <p> © 2026 Nothing Firmware. All rights reserved. | UI Designed for the Community</p>
+  <p> © 2026 Nothing Archive. All rights reserved. | UI Designed for the Community</p>
 </div>
